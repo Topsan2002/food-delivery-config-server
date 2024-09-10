@@ -5,7 +5,7 @@ node {
     try{
         notifyBuild('STARTED')
         stage('Clone Repo'){
-            git url: 'https://github.com/Topsan2002/atm-kotlin-basic.git',
+            git url: 'https://github.com/Topsan2002/config-server-food-delivery.git',
             branch:'master'
         }
         stage('Build Docker'){
