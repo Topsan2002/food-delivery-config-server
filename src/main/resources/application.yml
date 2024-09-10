@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: native
+  application:
+    name: config-server-food-delivery
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/configurations
+server:
+  port: ${PORT:8888}

@@ -1,0 +1,27 @@
+version: "3"
+services:
+  config-server-food-delivery:
+    container_name: config-server-food-delivery
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: '0.256'
+          memory: 512M
+        reservations:
+          cpus: '0.128'
+          memory: 128M
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: always
+    env_file:
+      - profile.env
+    ports:
+      - 8888:8888
+    networks:
+      - microservices-net
+
+networks:
+  microservices-net:
+    driver: bridge
