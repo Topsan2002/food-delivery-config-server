@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.food-delivery</groupId>
-    <artifactId>config-server-food-delivery</artifactId>
+    <artifactId>food-delivery-config-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>config-server-food-delivery</name>
     <description>config-server-food-delivery</description>
