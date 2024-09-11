@@ -9,7 +9,12 @@ node {
             branch:'master'
         }
         stage('Build Docker'){
-            dockerImage = docker.build("atm-kotlin-basic:${env.BUILD_NUMBER}")
+            dockerImage = docker.build("food-delivery-config-server:${env.BUILD_NUMBER}")
+        }
+        stage('Push to ECR'){
+            sh "aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 211125430268.dkr.ecr.ap-southeast-2.amazonaws.com"
+            sh "docker tag food-delivery-config-server:${env.BUILD_NUMBER} 211125430268.dkr.ecr.ap-southeast-2.amazonaws.com/food-delivery-config-server:${env.BUILD_NUMBER}"
+            sh "docker push 211125430268.dkr.ecr.ap-southeast-2.amazonaws.com/food-delivery-config-server:latest"
         }
       stage('Deploy docker'){
          echo "Docker Image Tag Name: ${dockerImageTag}"
