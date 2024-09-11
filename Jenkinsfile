@@ -6,11 +6,14 @@ pipeline {
           ECR_REPO_NAME = 'food-delivery-config-server'  // Replace with your ECR repository name
           IMAGE_TAG = "${env.BUILD_ID}"  // Or use 'latest' or any other tag
           WORKSPACE = "/var/lib/jenkins/workspace/atm-kotlin-basic"
+          NEWRELIC_API_KEY = credentials('newrelic-api-key')
+
      }
 
      stages {
              stage('Clone Repo') {
                  steps {
+                     echo "${NEWRELIC_API_KEY}"
                      git url: 'https://github.com/Topsan2002/config-server-food-delivery.git',
                                  branch:'master'
                  }
