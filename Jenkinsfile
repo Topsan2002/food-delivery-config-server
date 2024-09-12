@@ -49,7 +49,7 @@ pipeline {
                          steps {
                              script {
                                  def composeFile = "/var/jenkins_home/workspace/food-delivery/food-delivery-docker-compose/docker-compose.yml"
-                                 def serviceName = "food-delivery-discovery-service"
+                                 def serviceName = "food-delivery-config-server"
 
 
                                  echo "Stopping and removing any existing containers"
