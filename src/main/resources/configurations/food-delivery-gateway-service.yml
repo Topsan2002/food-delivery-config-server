@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: food-delivery-customer-service
+          uri: lb://FOOD-DELIVERY-CUSTOMER-SERVICE
+          predicates:
+            - Path=/api/v1/customer/**
+server:
+  port: 8222
