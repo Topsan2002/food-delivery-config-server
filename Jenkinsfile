@@ -41,8 +41,15 @@ pipeline {
                      }
                  }
              }
-              def composeFile = "/var/jenkins_home/workspace/food-delivery/food-delivery-docker-compose/docker-compose.yml"
-                                 def serviceName = "food-delivery-config-server"
+             stage('Deploy or Run Docker Container') {
+                         environment {
+                             WORKSPACE = '/var/lib/jenkins/workspace/food-delivery-compose'
+
+                         }
+                         steps {
+                             script {
+                                 def composeFile = "/var/jenkins_home/workspace/food-delivery/food-delivery-docker-compose/docker-compose.yml"
+                                 def serviceName = "food-delivery-discovery-service"
 
 
                                  echo "Stopping and removing any existing containers"
@@ -57,5 +64,8 @@ pipeline {
 
                                              echo "Recreating the Docker container for service '${serviceName}'"
                                              sh "docker-compose -f ${composeFile} up -d --force-recreate --no-deps ${serviceName}"
+                             }
+                         }
+                     }
          }
 }
