@@ -13,5 +13,13 @@ spring:
           uri: lb://FOOD-DELIVERY-ORDER-SERVICE
           predicates:
             - Path=/api/v1/order/**
+        - id: food-delivery-restaurant-service
+          uri: lb://FOOD-DELIVERY-RESTAURANT-SERVICE
+          predicates:
+            - Path=/api/v1/restaurant/**
+        - id: food-delivery-rider-service
+          uri: lb://FOOD-DELIVERY-RIDER-SERVICE
+          predicates:
+            - Path=/api/v1/rider/**
 server:
   port: 8222
